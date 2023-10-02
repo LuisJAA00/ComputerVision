@@ -1,2 +1,5 @@
 La funcion ya tiene el preprocesamiento que se muestra en el archivo live script de matlab, solo es necesario especificar el path de el dataset para
 que funcione el apartado "bag of visual words" del live script de matlab
+
+
+Si se necesita usar algun otro detector de features, se puede definir otra funcion extractora que utilize el feature extractor que se necesite.
