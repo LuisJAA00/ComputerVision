@@ -6,7 +6,7 @@ function [features, featureMetrics, varargout] = CustomSurf4(I)
     % RANGE FILTER
         J = rangefilt(I);
      % Transfer the image to the GPU
-        J = gpuArray(J);
+      %  J = gpuArray(J);
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         J = imcomplement(J);
         J = rgb2gray(J);
@@ -35,7 +35,7 @@ J = ~J;
     
 %%%%%%%%%%%%%%%%
 % Transfer  image back to the CPU if needed
-  J = gather(J);
+%  J = gather(J);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -51,7 +51,7 @@ points = detectSURFFeatures(J);
     img2 = imlocalbrighten(img2,amt,AlphaBlend=true);
 
 % Transfer the image to the GPU
-  img2 = gpuArray(img2);
+ % img2 = gpuArray(img2);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%
@@ -100,14 +100,14 @@ img2 = img2 ~= thresholdValue;
 %%%%%%%%%%%%%%%%
 
 % Transfer  image back to the CPU if needed
-  img2 = gather(img2);
+%  img2 = gather(img2);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 points2 = detectSURFFeatures(img2);
 
 
 
-pointsX = [points.selectStrongest(30);points2.selectStrongest(50)];
+pointsX = [points;points2];
 
 
 
